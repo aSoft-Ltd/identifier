@@ -13,7 +13,7 @@ import kotlinx.serialization.encoding.Encoder
 object NameSerializer : KSerializer<Name> {
     override fun deserialize(decoder: Decoder): Name = Name(decoder.decodeString())
 
-    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Name", PrimitiveKind.STRING)
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("identifier.Name", PrimitiveKind.STRING)
 
     override fun serialize(encoder: Encoder, value: Name) = encoder.encodeString(value.full)
 }

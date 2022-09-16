@@ -1,28 +1,22 @@
+@file:JsExport @file:Suppress("WRONG_EXPORTED_DECLARATION", "NON_EXPORTABLE_TYPE")
+
 package identifier
 
+import identifier.internal.PhoneImpl
 import identifier.serializers.PhoneSerializer
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 import kotlin.js.JsName
 
-@JsExport
 @Serializable(with = PhoneSerializer::class)
-class Phone(phone: String) {
-    @JsName("ofNumber")
-    constructor(phone: Int) : this(phone.toString())
+interface Phone : Comm {
+    companion object {
+        operator fun invoke(value: String): Phone = PhoneImpl(value)
 
-    @JsName("_ofNumber")
-    constructor(phone: Long) : this(phone.toString())
+        @JsName("fromInt")
+        operator fun invoke(value: Int): Phone = PhoneImpl(value.toString())
 
-    val value: String = parse(phone)
-
-    override fun equals(other: Any?): Boolean = when (other) {
-        is String -> value == other
-        is Phone -> value == other.value
-        else -> false
+        @JsName("_ignore_fromLong")
+        operator fun invoke(value: Long): Phone = PhoneImpl(value.toString())
     }
-
-    override fun hashCode(): Int = value.hashCode()
-
-    override fun toString() = value
 }

@@ -1,9 +1,7 @@
 package identifier
 
-import kotlin.js.JsExport
 import kotlin.js.JsName
 
-@JsExport
 object EmailGenerator {
 
     val domains = listOf(

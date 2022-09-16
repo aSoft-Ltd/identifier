@@ -1,32 +1,20 @@
+@file:JsExport
+@file:Suppress("WRONG_EXPORTED_DECLARATION")
+
 package identifier
 
+import identifier.internal.EmailImpl
 import identifier.serializers.EmailSerializer
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
-@JsExport
 @Serializable(with = EmailSerializer::class)
-class Email(val value: String) : CharSequence by value {
-    init {
-        val parts = value.split("@")
-        if (parts.size != 2 || parts.getOrNull(1)?.contains(".") != true) {
-            throw IllegalArgumentException("Invalid email: $value")
-        }
+interface Email : Comm {
+    val parts: Array<String>
+    val identity: String
+    val domain: String
+
+    companion object {
+        operator fun invoke(value: String): Email = EmailImpl(value)
     }
-
-    val parts get() = value.split("@")
-
-    val identity get() = parts.first()
-
-    val domain get() = parts.last()
-
-    override fun equals(other: Any?): Boolean = when (other) {
-        is String -> value == other
-        is Email -> value == other.value
-        else -> false
-    }
-
-    override fun hashCode(): Int = value.hashCode()
-
-    override fun toString() = value
 }

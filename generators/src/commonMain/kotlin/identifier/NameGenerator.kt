@@ -2,7 +2,6 @@ package identifier
 
 import kotlin.js.JsExport
 
-@JsExport
 object NameGenerator {
     val fakeNames = listOf(
         "Raiden",

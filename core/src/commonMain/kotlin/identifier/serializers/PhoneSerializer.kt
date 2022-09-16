@@ -12,6 +12,6 @@ import kotlinx.serialization.encoding.Encoder
 @Serializer(forClass = Phone::class)
 object PhoneSerializer : KSerializer<Phone> {
     override fun deserialize(decoder: Decoder) = Phone(decoder.decodeString())
-    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Phone", PrimitiveKind.STRING)
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("identifier.Phone", PrimitiveKind.STRING)
     override fun serialize(encoder: Encoder, value: Phone) = encoder.encodeString(value.value)
 }

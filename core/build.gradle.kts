@@ -8,7 +8,7 @@ plugins {
 kotlin {
     jvm { library() }
     js(IR) { library() }
-    val nativeTargets = nativeTargets(true)
+    linuxTargets(true)
 
     sourceSets {
         val commonMain by getting {

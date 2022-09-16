@@ -1,0 +1,8 @@
+abi_version=1.7.0
+builtins_platform=JS
+compiler_version=1.7.10
+depends=asoft\:identifier-generators asoft\:identifier-core asoft\:expect-core asoft\:functions-core org.jetbrains.kotlinx\:kotlinx-serialization-json org.jetbrains.kotlinx\:kotlinx-serialization-core kotlin-test kotlin
+ir_version=1.0.0
+jsOutputName=asoft-identifier-generators-test
+metadata_version=1.4.1
+unique_name=asoft\:identifier-generators_test

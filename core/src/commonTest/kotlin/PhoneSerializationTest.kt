@@ -1,5 +1,6 @@
 import identifier.Phone
 import expect.expect
+import identifier.serializers.PhoneSerializer
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
@@ -9,7 +10,7 @@ class PhoneSerializationTest {
 
     @Test
     fun should_serialize_the_phone_well() {
-        val json = Json.encodeToString(phone)
+        val json = Json.encodeToString(PhoneSerializer, phone)
         expect(json).toBe(""""255752748674"""")
     }
 

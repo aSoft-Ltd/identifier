@@ -11,7 +11,7 @@ import kotlinx.serialization.encoding.Encoder
 
 @Serializer(forClass = Email::class)
 object EmailSerializer : KSerializer<Email> {
-    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Email", PrimitiveKind.STRING)
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("identifier.Email", PrimitiveKind.STRING)
     override fun serialize(encoder: Encoder, value: Email) = encoder.encodeString(value.value)
     override fun deserialize(decoder: Decoder): Email = Email(decoder.decodeString())
 }

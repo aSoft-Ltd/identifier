@@ -1,12 +1,13 @@
+@file:JsExport
+
 package identifier
 
 import identifier.serializers.NameSerializer
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
-@JsExport
 @Serializable(with = NameSerializer::class)
-class Name(value: String) {
+class Name(value: String) : CharSequence by value {
 
     private val value = value.lowercase().split(" ").joinToString(" ") { it.capitalize() }
 

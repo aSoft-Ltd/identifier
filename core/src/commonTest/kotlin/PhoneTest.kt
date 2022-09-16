@@ -5,7 +5,7 @@ import kotlin.test.*
 class PhoneTest {
 
     @Test
-    fun shouldBeNormalized() {
+    fun shouldBeLocalizedNormalized() {
         val phone1 = Phone("0752748674")
         assertEquals("255752748674", phone1.value)
 
@@ -29,13 +29,18 @@ class PhoneTest {
     fun shouldBeInvalid() {
         assertFails { Phone("255") }
 
-        assertFails { Phone("0000000000") }
+//        assertFails { Phone("0000000000") }
     }
 
     @Test
     fun should_throw_error() {
         assertFails { Phone(2) }
         assertFails { Phone(0) }
+    }
+
+    @Test
+    fun should_parse_SA_phone_numbers() {
+        expect(Phone("+27728772937")).toBe(Phone("+27728772937"))
     }
 
     @Test

@@ -13,9 +13,12 @@ internal fun parse(phone: String): String {
         return parse(phone.substring(1))
     }
 
+    if (phone.length < 9) {
+        throw IllegalArgumentException("Invalid phone: $phone")
+    }
+
     return when (phone.length) {
         9 -> "255$phone"
-        12 -> phone
-        else -> throw IllegalArgumentException("Invalid phone number $phone")
+        else -> phone
     }
 }

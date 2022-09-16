@@ -1,0 +1,11 @@
+{
+  "name": "asoft-identifier-generators",
+  "version": "2.0.11",
+  "main": "asoft-identifier-generators.js",
+  "types": "asoft-identifier-generators.d.ts",
+  "devDependencies": {},
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": []
+}

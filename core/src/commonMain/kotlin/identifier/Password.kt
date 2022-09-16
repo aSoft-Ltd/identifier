@@ -1,9 +1,11 @@
+@file:JsExport
+@file:Suppress("NON_EXPORTABLE_TYPE")
+
 package identifier
 
 import kotlin.js.JsExport
 import kotlin.js.JsName
 
-@JsExport
 class Password(val value: String) : CharSequence by value {
     @JsName("from")
     constructor(value: Any) : this(value.toString())
