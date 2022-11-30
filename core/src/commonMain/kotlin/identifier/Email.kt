@@ -7,6 +7,8 @@ import identifier.internal.EmailImpl
 import identifier.serializers.EmailSerializer
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlin.jvm.JvmName
+import kotlin.jvm.JvmStatic
 
 @Serializable(with = EmailSerializer::class)
 interface Email : Comm {
@@ -15,6 +17,8 @@ interface Email : Comm {
     val domain: String
 
     companion object {
+        @JvmName("of")
+        @JvmStatic
         operator fun invoke(value: String): Email = EmailImpl(value)
     }
 }
