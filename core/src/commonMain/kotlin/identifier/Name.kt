@@ -7,13 +7,13 @@ import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
 @Serializable(with = NameSerializer::class)
-class Name(value: String) : CharSequence by value {
+class Name(val value: String) : CharSequence by value {
 
-    private val value = value.lowercase().split(" ").joinToString(" ") { it.capitalize() }
+    private val v = value.lowercase().split(" ").joinToString(" ") { it.capitalize() }
 
-    private val parts get() = value.split(" ")
+    private val parts get() = v.split(" ")
 
-    val full get() = value
+    val full get() = v
 
     val first get() = parts.getOrElse(0) { "" }
 
@@ -36,12 +36,12 @@ class Name(value: String) : CharSequence by value {
     fun randomized() = Name(parts.shuffled().joinToString(" "))
 
     override fun equals(other: Any?): Boolean = when (other) {
-        is String -> value == other
-        is Name -> value == other.value
+        is String -> v == other
+        is Name -> v == other.value
         else -> false
     }
 
-    override fun hashCode(): Int = value.hashCode()
+    override fun hashCode(): Int = v.hashCode()
 
-    override fun toString() = value
+    override fun toString() = v
 }
