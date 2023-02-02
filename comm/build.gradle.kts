@@ -13,7 +13,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(kotlinx.serialization.core)
+                api(projects.identifierCore)
             }
         }
 
@@ -28,5 +28,5 @@ kotlin {
 
 aSoftOSSLibrary(
     version = asoft.versions.root.get(),
-    description = "An multiplatform library for core identifiers like Unique && Named"
+    description = "An multiplatform library for communication objects identifiers like email & phone"
 )
