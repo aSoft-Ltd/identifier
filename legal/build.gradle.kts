@@ -14,6 +14,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.identifierComm)
+                api(projects.kronoApi)
+                api(projects.geoCore)
             }
         }
 
