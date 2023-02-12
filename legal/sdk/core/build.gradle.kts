@@ -13,9 +13,15 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.identifierComm)
-                api(projects.kronoApi)
-                api(projects.geoCore)
+				api(projects.identifierLegalCore)
+                api(projects.presentersInputsKrono)
+                api(projects.presentersInputsGeo)
+                api(projects.presentersInputsIdentifier)
+                api(projects.presentersMisc)
+                api(projects.liveKollections)
+                api(projects.bitframeServiceBuilderSdkClientCore)
+                api(projects.kaseBuilders)
+
             }
         }
 
