@@ -26,4 +26,3 @@ data class Individual(
     val emails get() = comms.filterIsInstance<UserEmail>().toIList()
     val phones get() = comms.filterIsInstance<UserPhone>().toIList()
 }
-
