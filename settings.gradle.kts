@@ -35,6 +35,9 @@ rootProject.name = "identifier"
 includeBuild("../able")
 
 // dependencies
+includeSubs("functions", "../functions", "core")
 includeSubs("kommander", "../kommander", "core")
+includeSubs("kollections", "../kollections", "interoperable")
 
-includeSubs("identifier", ".", "core")
+includeSubs("identifier", ".", "core", "comm")
+// submodules
