@@ -38,12 +38,18 @@ includeBuild("../kash/currency-generator")
 
 // dependencies
 includeSubs("functions", "../functions", "core")
-includeSubs("kommander", "../kommander", "core")
-includeSubs("kollections", "../kollections", "interoperable")
+includeSubs("kommander", "../kommander", "core", "coroutines")
+includeSubs("kollections", "../kollections", "interoperable", "atomic")
+includeSubs("hormone", "../hormone", "core")
+includeSubs("kevlar", "../kevlar", "core")
+includeSubs("kase", "../kase", "core")
+includeSubs("koncurrent-executors", "../koncurrent/executors", "core", "coroutines", "mock")
+includeSubs("koncurrent-later", "../koncurrent/later", "core", "coroutines", "test")
+includeSubs("kronecker", "../kronecker", "core")
+includeSubs("liquid", "../liquid", "number")
 includeSubs("kash", "../kash/", "currency")
 includeSubs("geo", "../geo", "countries", "core")
 includeSubs("krono", "../krono", "api")
-includeSubs("liquid", "../liquid", "number")
 
 // submodules
 includeSubs("identifier", ".", "core", "comm")

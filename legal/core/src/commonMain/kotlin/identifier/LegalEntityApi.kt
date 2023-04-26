@@ -2,8 +2,8 @@
 
 package identifier
 
-import bitframe.Deleter
-import bitframe.Loader
+import hormone.Deleter
+import hormone.Loader
 import kotlin.js.JsExport
 
 interface LegalEntityApi :
