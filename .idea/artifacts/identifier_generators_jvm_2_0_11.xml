@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="identifier-generators-jvm-2.0.11">
-    <output-path>$PROJECT_DIR$/generators/build/libs</output-path>
-    <root id="archive" name="identifier-generators-jvm-2.0.11.jar">
-      <element id="module-output" name="asoft.identifier-generators.jvmMain" />
-    </root>
-  </artifact>
-</component>
