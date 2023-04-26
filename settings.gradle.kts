@@ -33,11 +33,18 @@ fun includeSubs(base: String, path: String = base, vararg subs: String) {
 rootProject.name = "identifier"
 
 includeBuild("../able")
+includeBuild("../geo/geo-generator")
+includeBuild("../kash/currency-generator")
 
 // dependencies
 includeSubs("functions", "../functions", "core")
 includeSubs("kommander", "../kommander", "core")
 includeSubs("kollections", "../kollections", "interoperable")
+includeSubs("kash", "../kash/", "currency")
+includeSubs("geo", "../geo", "countries", "core")
+includeSubs("krono", "../krono", "api")
+includeSubs("liquid", "../liquid", "number")
 
-includeSubs("identifier", ".", "core", "comm")
 // submodules
+includeSubs("identifier", ".", "core", "comm")
+includeSubs("identifier-legal", "legal", "core")
