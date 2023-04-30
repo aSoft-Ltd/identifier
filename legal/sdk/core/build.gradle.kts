@@ -7,27 +7,31 @@ plugins {
 
 kotlin {
     jvm { library() }
-    js(IR) { library() }
-    linuxTargets(true)
+    if (Targeting.JS) js(IR) { library() }
+//    if (Targeting.WASM) wasm { library() }
+    val osxTargets = if (Targeting.OSX) osxTargets() else listOf()
+//    val ndkTargets = if (Targeting.NDK) ndkTargets() else listOf()
+    val linuxTargets = if (Targeting.LINUX) linuxTargets() else listOf()
+//    val mingwTargets = if (Targeting.MINGW) mingwTargets() else listOf()
 
     sourceSets {
         val commonMain by getting {
             dependencies {
 				api(projects.identifierLegalCore)
-                api(projects.presentersInputsKrono)
-                api(projects.presentersInputsGeo)
-                api(projects.presentersInputsIdentifier)
-                api(projects.presentersMisc)
-                api(projects.liveKollections)
+                // api(projects.symphonyInputsKrono)
+                // api(projects.symphonyInputsGeo)
+                // api(projects.symphonyInputsIdentifier)
+                // // api(projects.symphonyMisc)
+                api(projects.cinematicLiveKollections)
                 api(projects.bitframeServiceBuilderSdkClientCore)
-                api(projects.kaseBuilders)
+                // api(projects.kaseBuilders)
 
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.expectCore)
+                implementation(projects.kommanderCore)
                 implementation(kotlinx.serialization.json)
             }
         }
