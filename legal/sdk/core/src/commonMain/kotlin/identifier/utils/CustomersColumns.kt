@@ -3,7 +3,7 @@ package identifier.utils
 import identifier.Corporate
 import identifier.LegalEntity
 import identifier.Individual
-import presenters.collections.columnsOf
+import symphony.columnsOf
 
 fun LegalEntityColumns() = columnsOf<LegalEntity> {
     selectable()
@@ -11,19 +11,19 @@ fun LegalEntityColumns() = columnsOf<LegalEntity> {
     column("Name") { it.item.name }
     column("industry") {
         when (val c = it.item) {
-            is Corporate -> c.industry.toString()
+            is Corporate -> c.industry
             is Individual -> "N/A"
         }
     }
     column("Country") {
         when (val c = it.item) {
-            is Corporate -> c.headQuarters.location?.country.toString()
-            is Individual -> c.location?.country.toString()
+            is Corporate -> c.headQuarters.location?.country
+            is Individual -> c.location?.country
         }
     }
     column("HeadQuarters") {
         when (val c = it.item) {
-            is Corporate -> c.headQuarters.location.toString()
+            is Corporate -> c.headQuarters.location
             is Individual -> "N/A"
         }
     }

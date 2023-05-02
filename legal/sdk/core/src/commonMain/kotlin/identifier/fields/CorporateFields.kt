@@ -9,16 +9,16 @@ import identifier.Industry
 import identifier.primaryContact
 import identifier.primaryEmail
 import identifier.primaryPhone
-import presenters.Fields
-import presenters.Option
-import presenters.date
-import presenters.email
-import presenters.integer
-import presenters.location
-import presenters.name
-import presenters.phone
-import presenters.selectSingle
-import presenters.text
+import symphony.Fields
+import symphony.Option
+import symphony.date
+import symphony.email
+import symphony.integer
+import symphony.location
+import symphony.name
+import symphony.phone
+import symphony.selectSingle
+import symphony.text
 import kotlin.js.JsExport
 
 class CorporateFields(val customer: Corporate?) : Fields() {
