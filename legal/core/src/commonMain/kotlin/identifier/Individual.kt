@@ -14,6 +14,7 @@ import kotlin.js.JsExport
 data class Individual(
     override val uid: String,
     override val name: String,
+    override val image: String? = null,
     val title: String? = null,
     val dob: LocalDate? = null,
     val gender: Gender? = null,
