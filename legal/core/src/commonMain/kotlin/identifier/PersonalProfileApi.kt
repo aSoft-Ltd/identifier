@@ -1,15 +1,17 @@
 package identifier
 
 import epsilon.Blob
+import identifier.params.IndividualProfileParams
+import identifier.params.PasswordParams
 import koncurrent.Later
 
 interface PersonalProfileApi {
 
     fun changeProfilePicture(file: Blob): Later<Individual>
 
-    fun changeUsername(username: String): Later<Individual>
+    fun changePassword(params: PasswordParams): Later<Individual>
 
-    fun changePassword(params: Password): Later<Individual>
+    fun update(params: IndividualProfileParams): Later<Individual>
 
     /**
      * You can't login with an unverified email, but you can sure add them
@@ -20,12 +22,12 @@ interface PersonalProfileApi {
      * should kick off the email verification process.
      * Should fail even when the email is already verified
      */
-    fun beginEmailVerificationProcess(email: String): Later<Individual>
+    fun beginEmailVerificationProcess(email: String): Later<String>
 
     /**
      * send the token to verify this email
      */
-    fun completeEmailVerificationProcess(token: String): Later<Individual>
+    fun completeEmailVerificationProcess(token: String): Later<String>
 
     /**
      * This delete action must leave at least one verified email/phone.
@@ -37,12 +39,12 @@ interface PersonalProfileApi {
      * should kick off the email verification process.
      * Should fail even when the email is already verified
      */
-    fun beginPhoneVerificationProcess(phone: String): Later<Individual>
+    fun beginPhoneVerificationProcess(phone: String): Later<String>
 
     /**
      * send the token to verify this email
      */
-    fun completePhoneVerificationProcess(phone: String): Later<Individual>
+    fun completePhoneVerificationProcess(phone: String): Later<String>
 
     /**
      * You can't login with an unverified phone number, but you can sure add them
