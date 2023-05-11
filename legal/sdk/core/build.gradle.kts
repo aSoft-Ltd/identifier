@@ -14,8 +14,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
 				api(projects.identifierLegalCore)
-                api(projects.presentersInputsKrono)
-                api(projects.presentersInputsGeo)
+                api(projects.kronoSymphony)
+                api(projects.geoSymphony)
                 api(projects.presentersInputsIdentifier)
                 api(projects.presentersMisc)
                 api(projects.liveKollections)
