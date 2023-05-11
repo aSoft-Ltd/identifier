@@ -1,10 +1,10 @@
-//@file:JsExport
+@file:JsExport
 @file:Suppress("NON_EXPORTABLE_TYPE")
 
 package identifier.forms
 
-/*
-import bitframe.Loader
+import cinematic.LazyScene
+import hormone.Loader
 import identifier.Corporate
 import identifier.Individual
 import identifier.LegalEntity
@@ -19,14 +19,13 @@ import kase.map
 import kase.toLazyState
 import koncurrent.Later
 import koncurrent.later.finally
-import live.mutableLiveOf
-import viewmodel.LazyViewModel
-import viewmodel.ScopeConfig
+import cinematic.mutableLiveOf
+import identifier.IdentifierScopeConfig
 import kotlin.js.JsExport
 
-abstract class LegalEntityFormViewModel(
-    private val config: ScopeConfig<Loader<LegalEntity>>
-) : LazyViewModel<LegalEntityForm>(config) {
+abstract class LegalEntityFormScene(
+    private val config: IdentifierScopeConfig<Loader<LegalEntity>>
+) : LazyScene<LegalEntityForm>(Pending) {
 
     val original = mutableLiveOf<LazyState<LegalEntity?>>(Pending)
 
@@ -63,4 +62,3 @@ abstract class LegalEntityFormViewModel(
 
     abstract fun corporateForm(customer: Corporate?): CorporateForm
 }
-*/

@@ -11,6 +11,7 @@ sealed class LegalEntity {
     abstract val uid: String
     abstract val gid: String
     abstract val name: String
+    abstract val image: String?
 
     val asIndividual get() = this as? Individual
 

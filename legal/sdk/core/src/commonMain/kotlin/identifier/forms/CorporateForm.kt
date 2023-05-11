@@ -6,9 +6,9 @@ package identifier.forms
 import identifier.fields.CorporateFields as Fields
 import identifier.params.CorporateParams as Params
 import identifier.Corporate
-import presenters.Form
-import presenters.FormActionsBuildingBlock
-import presenters.FormConfig
+import symphony.Form
+import symphony.FormActionsBuildingBlock
+import symphony.FormConfig
 import kotlin.js.JsExport
 
 class CorporateForm(

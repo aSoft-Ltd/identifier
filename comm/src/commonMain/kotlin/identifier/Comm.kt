@@ -8,7 +8,6 @@ import kotlin.js.JsExport
 import kotlin.jvm.JvmOverloads
 import kotlin.jvm.JvmStatic
 
-
 /**
  * A class representing a way of communicating
  *  currently supports email addresses and phone numbers

@@ -1,11 +1,11 @@
 package identifier.utils
 
-import bitframe.Loader
+import hormone.Loader
+import identifier.IdentifierScopeConfig
 import identifier.LegalEntity
 import koncurrent.Later
-import viewmodel.ScopeConfig
 
-fun ScopeConfig<Loader<LegalEntity>>.loadCacheableLegalEntity(
+fun IdentifierScopeConfig<Loader<LegalEntity>>.loadCacheableLegalEntity(
     uid: String,
     beforeNetwork: () -> Unit
 ) = cache.loadSelectedCustomer().andThen {
@@ -14,7 +14,7 @@ fun ScopeConfig<Loader<LegalEntity>>.loadCacheableLegalEntity(
     api.load(uid)
 }
 
-internal fun ScopeConfig<Loader<LegalEntity>>.loadCacheableLegalEntityOrNull(
+internal fun IdentifierScopeConfig<Loader<LegalEntity>>.loadCacheableLegalEntityOrNull(
     uid: String?,
     beforeNetwork: () -> Unit
 ) = if (uid == null) Later(null) else loadCacheableLegalEntity(uid, beforeNetwork)

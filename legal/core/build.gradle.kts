@@ -23,6 +23,7 @@ kotlin {
                 api(projects.hormoneCore)
                 api(projects.kronoApi)
                 api(projects.geoCore)
+                api(projects.epsilonCore)
             }
         }
 

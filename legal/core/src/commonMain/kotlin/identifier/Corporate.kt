@@ -13,6 +13,7 @@ import kotlin.js.JsExport
 data class Corporate(
     override val uid: String,
     override val name: String,
+    override val image: String? = null,
     val headQuarters: CorporateBranch = CorporateBranch("Head Quarters"),
     val branches: List<CorporateBranch> = iListOf(),
     val registrationNo: String? = null,
