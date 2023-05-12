@@ -29,7 +29,7 @@ abstract class LegalEntityFormScene(
 
     val original = mutableLiveOf<LazyState<LegalEntity?>>(Pending)
 
-    fun initialize(uid: String? = null): Later<LegalEntityForm> = config.loadCacheableLegalEntityOrNull(uid) {
+    protected fun initializeWith(uid: String?): Later<LegalEntityForm> = config.loadCacheableLegalEntityOrNull(uid) {
         val loading = loading(uid, "form")
         original.value = loading
         ui.value = loading
@@ -40,7 +40,7 @@ abstract class LegalEntityFormScene(
             null -> individualForm(it)
         }
     }.finally { res ->
-        val state = res.toLazyState { onRetry { initialize(uid) } }
+        val state = res.toLazyState { onRetry { initializeWith(uid) } }
         original.value = state.map { it.entity }
         ui.value = state
     }
