@@ -51,6 +51,19 @@ includeSubs("kash", "../kash/", "currency")
 includeSubs("geo", "../geo", "countries", "core")
 includeSubs("krono", "../krono", "api")
 
+// dependencies for symphony
+includeSubs("keep", "../keep", "api", "file", "mock", "test")
+includeSubs("lexi", "../lexi", "api", "console")
+includeSubs("lexi-test", "../lexi/test", "android")
+includeSubs("krest", "../krest", "core")
+includeSubs("cinematic-live", "../cinematic/live", "core", "coroutines", "test", "kollections")
+includeSubs("cinematic-scene", "../cinematic/scene", "core")
+
+includeSubs("symphony-collections", "../symphony/collections", "core")
+includeSubs("symphony-inputs", "../symphony/inputs", "core", "collections")
+includeSubs("symphony-collections-renderers", "../symphony/collections/renderers", "string")
+
 // submodules
 includeSubs("identifier", ".", "core", "comm")
 includeSubs("identifier-legal", "legal", "core")
+includeSubs("identifier-legal-sdk", "legal/sdk", "core")
