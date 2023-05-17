@@ -21,40 +21,39 @@ import koncurrent.Later
 import koncurrent.later.finally
 import cinematic.mutableLiveOf
 import identifier.IdentifierScopeConfig
+import kase.bagOf
 import kotlin.js.JsExport
 
 abstract class LegalEntityFormScene(
     private val config: IdentifierScopeConfig<Loader<LegalEntity>>
 ) : LazyScene<LegalEntityForm>(Pending) {
 
-    val original = mutableLiveOf<LazyState<LegalEntity?>>(Pending)
+    val original = bagOf<LegalEntity>()
 
     protected fun initializeWith(uid: String?): Later<LegalEntityForm> = config.loadCacheableLegalEntityOrNull(uid) {
         val loading = loading(uid, "form")
-        original.value = loading
         ui.value = loading
     }.then {
+        original.value = it
         when (it) {
             is Corporate -> corporateForm(it)
             is Individual -> individualForm(it)
             null -> individualForm(it)
         }
-    }.finally { res ->
-        val state = res.toLazyState { onRetry { initializeWith(uid) } }
-        original.value = state.map { it.entity }
-        ui.value = state
+    }.finally {
+        ui.value = it.toLazyState { onRetry { initializeWith(uid) } }
     }
 
     fun switchToCorporateForm() {
-        ui.value = Success(corporateForm(original.value.data?.toCorporate()))
+        ui.value = Success(corporateForm(original.value?.toCorporate()))
     }
 
     fun switchToIndividualForm() {
-        ui.value = Success(individualForm(original.value.data?.toIndividual()))
+        ui.value = Success(individualForm(original.value?.toIndividual()))
     }
 
     override fun deInitialize() {
-        original.value = Pending
+        original.clean()
         super.deInitialize()
     }
 
