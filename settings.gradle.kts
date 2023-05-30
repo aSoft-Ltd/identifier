@@ -60,9 +60,8 @@ includeSubs("krest", "../krest", "core")
 includeSubs("cinematic-live", "../cinematic/live", "core", "coroutines", "test", "kollections")
 includeSubs("cinematic-scene", "../cinematic/scene", "core")
 
-includeSubs("symphony-collections", "../symphony/collections", "core")
-includeSubs("symphony-inputs", "../symphony/inputs", "core", "collections")
-includeSubs("symphony-collections-renderers", "../symphony/collections/renderers", "string")
+includeSubs("symphony", "../symphony", "paginator", "selector", "actions", "list", "table", "collections")
+includeSubs("symphony-input", "../symphony/input", "core", "form", "text", "number", "choice", "list", "file", "kash", "krono", "identifier", "geo", "dialog")
 
 // submodules
 includeSubs("identifier", ".", "core", "comm")
