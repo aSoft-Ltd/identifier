@@ -21,7 +21,7 @@ kotlin {
                 api(projects.identifierLegalCore)
                 api(projects.hormoneCore)
                 api(projects.cinematicLiveKollections)
-                api(projects.symphonyTable)
+                api(projects.symphonyCollections)
                 api(projects.symphonyInputChoice)
                 api(projects.symphonyInputForm)
                 api(projects.symphonyInputText)
