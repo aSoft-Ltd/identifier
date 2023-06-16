@@ -14,7 +14,7 @@ import kotlin.js.JsExport
 class CorporateForm(
     override val heading: String,
     override val entity: Corporate?,
-    config: FormConfig<Params>,
+    config: FormConfig,
     initializer: FormActionsBuildingBlock<Params, Corporate>
 ) : Form<Fields, Params, Corporate>(
     heading, "Enter customer's info",

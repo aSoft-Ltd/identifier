@@ -6,6 +6,7 @@ package identifier.fields
 import identifier.params.IndividualParams as Params
 import identifier.DocumentType
 import identifier.Individual
+import identifier.transformers.toParams
 import symphony.Fields
 import symphony.Option
 import symphony.date
@@ -17,37 +18,36 @@ import symphony.selectSingle
 import symphony.text
 import kotlin.js.JsExport
 
-class IndividualFields(customer: Individual?) : Fields() {
+class IndividualFields(customer: Individual?) : Fields<Params>(customer.toParams()) {
     val name = name(
-        name = Params::name,
-        value = customer?.name,
+        name = output::name,
         isRequired = true
     )
 
     val title = selectSingle(
-        name = Params::title,
+        name = output::title,
         items = listOf("Mr", "Mrs", "Ms"),
         mapper = { Option(it) }
     )
 
     val email = email(
-        name = Params::email,
+        name = output::email,
         value = customer?.emails?.firstOrNull()?.value
     )
 
-    val phone = phone(
-        name = Params::phone,
-        value = customer?.phones?.firstOrNull()?.value
-    )
+//    val phone = phone(
+//        name = output::phone,
+//        value = customer?.phones?.firstOrNull()?.value
+//    )
 
     val dob = date(
-        name = Params::dob,
+        name = output::dob,
         label = "Date of birth",
         value = customer?.dob
     )
 
     val location = location(
-        name = Params::location,
+        name = output::location,
         value = customer?.location
     )
 
@@ -57,13 +57,13 @@ class IndividualFields(customer: Individual?) : Fields() {
     )
 
     val idNumber = text(
-        name = Params::idDocumentNumber,
+        name = output::idDocumentNumber,
         label = "Id Number",
         value = customer?.idDocumentNumber
     )
 
     val idType = selectSingle(
-        name = Params::idDocumentType,
+        name = output::idDocumentType,
         label = "Id Type",
         items = (DocumentType.values().toSet() - DocumentType.UNKNOWN),
         value = customer?.idDocumentType,

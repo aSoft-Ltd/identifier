@@ -12,13 +12,13 @@ import kotlin.js.JsExport
 
 @Serializable
 data class IndividualParams(
-    val name: String,
-    val email: String? = null,
-    val phone: String? = null,
-    val title: String? = null,
-    val dob: LocalDate? = null,
-    val gender: Gender? = null,
-    val idDocumentNumber: String? = null,
-    val idDocumentType: DocumentType? = null,
-    val location: GeoLocation? = null
+    var name: String,
+    var email: String? = null,
+    var phone: String? = null,
+    var title: String? = null,
+    var dob: LocalDate? = null,
+    var gender: Gender? = null,
+    var idDocumentNumber: String? = null,
+    var idDocumentType: DocumentType? = null,
+    var location: GeoLocation? = null
 )

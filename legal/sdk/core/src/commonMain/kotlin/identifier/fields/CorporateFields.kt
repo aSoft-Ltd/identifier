@@ -3,12 +3,9 @@
 
 package identifier.fields
 
-import identifier.params.CorporateParams as Params
 import identifier.Corporate
 import identifier.Industry
-import identifier.primaryContact
-import identifier.primaryEmail
-import identifier.primaryPhone
+import identifier.transformers.toParams
 import symphony.Fields
 import symphony.Option
 import symphony.date
@@ -20,86 +17,72 @@ import symphony.phone
 import symphony.selectSingle
 import symphony.text
 import kotlin.js.JsExport
+import identifier.params.CorporateParams as Params
 
-class CorporateFields(val customer: Corporate?) : Fields() {
+class CorporateFields(val customer: Corporate?) : Fields<Params>(customer.toParams()) {
 
-    val name = name(
-        name = Params::name,
-        value = customer?.name,
-        isRequired = true
-    )
+    val name = name(output::name)
 
     val industry = selectSingle(
-        name = Params::industry,
+        name = output::industry,
         label = "Industry",
         items = Industry.values().toList(),
-        value = customer?.industry,
         mapper = { Option(it.label, it.name) },
     )
 
     val businessType = selectSingle(
-        name = Params::businessType,
+        name = output::businessType,
         label = "Business Type",
         isRequired = true,
         items = Corporate.Type.values().toList(),
-        value = customer?.type,
         mapper = { Option(it.label, it.name) },
     )
 
     val headquarters = location(
-        name = Params::hqLocation,
+        name = output::hqLocation,
         label = "Headquarters",
-        value = customer?.headQuarters?.location
     )
 
     val registrationNo = text(
-        name = Params::registrationNo,
-        label = "Registration No",
-        value = customer?.registrationNo
+        name = output::registrationNo,
+        label = "Registration No"
     )
 
     val registrationDate = date(
-        name = Params::registrationDate,
-        label = "Registration Date",
-        value = customer?.registrationDate
+        name = output::registrationDate,
+        label = "Registration Date"
     )
 
     val tin = text(
-        name = Params::tin,
+        name = output::tin,
         label = "TIN",
-        value = customer?.taxPayerIdentificationNo
     )
 
     val vat = text(
-        name = Params::vat,
-        label = "VAT Number",
-        value = customer?.vatNo
+        name = output::vat,
+        label = "VAT Number"
     )
 
     val website = text(
-        name = Params::website,
+        name = output::website,
         label = "Website",
-        value = customer?.website,
         minLength = 3
     )
 
     val contactName = name(
-        name = Params::contactName,
+        name = output::contactName,
         label = "Contact Name",
-        value = customer?.primaryContact?.name,
     )
 
     val contactEmail = email(
-        name = Params::contactEmail,
+        name = output::contactEmail,
         label = "Contact Email",
-        value = customer?.primaryEmail?.value
     )
 
-    val contactPhone = phone(
-        name = Params::contactPhone,
-        label = "Contact Phone",
-        value = customer?.primaryPhone?.value
-    )
+//    val contactPhone = phone(
+//        name = output::contactPhone,
+//        label = "Contact Phone",
+//    )
 
     val numberOfEmployees = integer(
         name = "NoE",
@@ -107,7 +90,7 @@ class CorporateFields(val customer: Corporate?) : Fields() {
     )
 
     val contactRole = selectSingle(
-        name = Params::contactRole,
+        name = output::contactRole,
         label = "Contact Role",
         items = listOf("Manager", "Officer", "Accountant", "Other"),
         mapper = { Option(it) }

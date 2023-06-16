@@ -14,7 +14,7 @@ import kotlin.js.JsExport
 class IndividualForm(
     override val heading: String,
     override val entity: Individual?,
-    config: FormConfig<Params>,
+    config: FormConfig,
     initializer: FormActionsBuildingBlock<Params, Individual>
 ) : Form<Fields, Params, Individual>(
     heading, "Enter customer's info",

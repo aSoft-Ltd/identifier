@@ -12,17 +12,17 @@ import kotlin.js.JsExport
 
 @Serializable
 data class CorporateParams(
-    val name: String,
-    val contactName: String? = null,
-    val contactEmail: String? = null,
-    val contactPhone: String? = null,
-    val contactRole: String? = null,
-    val industry: Industry? = null,
-    val registrationNo: String? = null,
-    val registrationDate: LocalDate? = null,
-    val tin: String? = null,
-    val vat: String? = null,
-    val website: String? = null,
-    val hqLocation: GeoLocation? = null,
-    val businessType: Corporate.Type? = null
+    var name: String,
+    var contactName: String? = null,
+    var contactEmail: String? = null,
+    var contactPhone: String? = null,
+    var contactRole: String? = null,
+    var industry: Industry? = null,
+    var registrationNo: String? = null,
+    var registrationDate: LocalDate? = null,
+    var tin: String? = null,
+    var vat: String? = null,
+    var website: String? = null,
+    var hqLocation: GeoLocation? = null,
+    var businessType: Corporate.Type? = null
 )
