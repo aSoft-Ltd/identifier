@@ -7,7 +7,7 @@ import identifier.fields.CorporateFields as Fields
 import identifier.params.CorporateParams as Params
 import identifier.Corporate
 import symphony.Form
-import symphony.FormInitialzer
+import symphony.FormInitializer
 import symphony.FormConfig
 import kotlin.js.JsExport
 
@@ -15,7 +15,7 @@ class CorporateForm(
     override val heading: String,
     override val entity: Corporate?,
     config: FormConfig,
-    initializer: FormInitialzer<Params, Corporate>
+    initializer: FormInitializer<Params, Corporate>
 ) : Form<Fields, Params, Corporate>(
     heading, "Enter customer's info",
     fields = Fields(entity),
