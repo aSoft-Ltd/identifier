@@ -6,20 +6,21 @@ package identifier.fields
 import identifier.Corporate
 import identifier.Industry
 import identifier.transformers.toParams
-import symphony.Fields
+import neat.min
+import neat.required
 import symphony.Option
 import symphony.date
 import symphony.email
-import symphony.integer
 import symphony.location
 import symphony.name
-import symphony.phone
 import symphony.selectSingle
 import symphony.text
 import kotlin.js.JsExport
 import identifier.params.CorporateParams as Params
 
-class CorporateFields(val customer: Corporate?) : Fields<Params>(customer.toParams()) {
+class CorporateFields(
+    override val entity: Corporate?
+) : LegalEntityFields<Params>(entity.toParams()) {
 
     val name = name(output::name)
 
@@ -33,10 +34,9 @@ class CorporateFields(val customer: Corporate?) : Fields<Params>(customer.toPara
     val businessType = selectSingle(
         name = output::businessType,
         label = "Business Type",
-        isRequired = true,
         items = Corporate.Type.values().toList(),
         mapper = { Option(it.label, it.name) },
-    )
+    ) { required() }
 
     val headquarters = location(
         name = output::hqLocation,
@@ -66,8 +66,10 @@ class CorporateFields(val customer: Corporate?) : Fields<Params>(customer.toPara
     val website = text(
         name = output::website,
         label = "Website",
-        minLength = 3
-    )
+    ) {
+        min(3)
+        optional()
+    }
 
     val contactName = name(
         name = output::contactName,
@@ -84,10 +86,10 @@ class CorporateFields(val customer: Corporate?) : Fields<Params>(customer.toPara
 //        label = "Contact Phone",
 //    )
 
-    val numberOfEmployees = integer(
-        name = "NoE",
-        label = "Number of Employees"
-    )
+//    val numberOfEmployees = integer(
+//        name = "NoE",
+//        label = "Number of Employees"
+//    )
 
     val contactRole = selectSingle(
         name = output::contactRole,

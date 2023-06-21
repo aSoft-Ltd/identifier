@@ -12,33 +12,34 @@ import identifier.toCorporate
 import identifier.toIndividual
 import identifier.utils.loadCacheableLegalEntityOrNull
 import identifier.utils.loading
-import kase.LazyState
 import kase.Pending
 import kase.Success
-import kase.map
 import kase.toLazyState
-import koncurrent.Later
 import koncurrent.later.finally
-import cinematic.mutableLiveOf
 import identifier.IdentifierScopeConfig
+import identifier.fields.CorporateFields
+import identifier.fields.IndividualFields
+import identifier.fields.LegalEntityFields
 import kase.bagOf
+import koncurrent.Later
+import symphony.FormField
+import symphony.toForm
 import kotlin.js.JsExport
 
 abstract class LegalEntityFormScene(
     private val config: IdentifierScopeConfig<Loader<LegalEntity>>
-) : LazyScene<LegalEntityForm>(Pending) {
+) : LazyScene<FormField<LegalEntityFields<*>>>(Pending) {
 
     val original = bagOf<LegalEntity>()
 
-    protected fun initializeWith(uid: String?): Later<LegalEntityForm> = config.loadCacheableLegalEntityOrNull(uid) {
+    protected fun initializeWith(uid: String?): Later<Any> = config.loadCacheableLegalEntityOrNull(uid) {
         val loading = loading(uid, "form")
         ui.value = loading
     }.then {
         original.value = it
         when (it) {
             is Corporate -> corporateForm(it)
-            is Individual -> individualForm(it)
-            null -> individualForm(it)
+            else -> individualForm(it as? Individual)
         }
     }.finally {
         ui.value = it.toLazyState { onRetry { initializeWith(uid) } }
@@ -57,7 +58,7 @@ abstract class LegalEntityFormScene(
         super.deInitialize()
     }
 
-    abstract fun individualForm(customer: Individual?): IndividualForm
+    abstract fun individualForm(customer: Individual?): FormField<IndividualFields>
 
-    abstract fun corporateForm(customer: Corporate?): CorporateForm
+    abstract fun corporateForm(customer: Corporate?): FormField<CorporateFields>
 }

@@ -7,22 +7,21 @@ import identifier.params.IndividualParams as Params
 import identifier.DocumentType
 import identifier.Individual
 import identifier.transformers.toParams
+import neat.required
 import symphony.Fields
 import symphony.Option
 import symphony.date
 import symphony.email
 import symphony.location
 import symphony.name
-import symphony.phone
 import symphony.selectSingle
 import symphony.text
 import kotlin.js.JsExport
 
-class IndividualFields(customer: Individual?) : Fields<Params>(customer.toParams()) {
-    val name = name(
-        name = output::name,
-        isRequired = true
-    )
+class IndividualFields(
+    override val entity: Individual?
+) : LegalEntityFields<Params>(entity.toParams()) {
+    val name = name(name = output::name) { required() }
 
     val title = selectSingle(
         name = output::title,
@@ -32,7 +31,7 @@ class IndividualFields(customer: Individual?) : Fields<Params>(customer.toParams
 
     val email = email(
         name = output::email,
-        value = customer?.emails?.firstOrNull()?.value
+        value = entity?.emails?.firstOrNull()?.value
     )
 
 //    val phone = phone(
@@ -43,30 +42,30 @@ class IndividualFields(customer: Individual?) : Fields<Params>(customer.toParams
     val dob = date(
         name = output::dob,
         label = "Date of birth",
-        value = customer?.dob
+        value = entity?.dob
     )
 
     val location = location(
         name = output::location,
-        value = customer?.location
+        value = entity?.location
     )
 
-    val address = text(
-        name = "address",
-        value = customer?.location?.address
-    )
+//    val address = text(
+//        name = "address",
+//        value = customer?.location?.address
+//    )
 
     val idNumber = text(
         name = output::idDocumentNumber,
         label = "Id Number",
-        value = customer?.idDocumentNumber
+        value = entity?.idDocumentNumber
     )
 
     val idType = selectSingle(
         name = output::idDocumentType,
         label = "Id Type",
         items = (DocumentType.values().toSet() - DocumentType.UNKNOWN),
-        value = customer?.idDocumentType,
+        value = entity?.idDocumentType,
         mapper = { Option(it.label, it.name) }
     )
 }
