@@ -3,11 +3,11 @@ package identifier.utils
 import symphony.CacheKeys
 import keep.Cache
 import keep.loadOrNull
-import identifier.LegalEntity
+import identifier.LegalEntityDto
 import koncurrent.Later
 import symphony.removeSelectedItem
 
-inline fun Cache.loadSelectedCustomer() = loadOrNull(CacheKeys.SELECTED_ITEM, LegalEntity.serializer())
+inline fun Cache.loadSelectedCustomer() = loadOrNull(CacheKeys.SELECTED_ITEM, LegalEntityDto.serializer())
 
 @Deprecated(
     message = "do not use this",

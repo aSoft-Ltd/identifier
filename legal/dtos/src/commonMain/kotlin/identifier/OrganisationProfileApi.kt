@@ -7,9 +7,9 @@ import koncurrent.Later
 
 interface OrganisationProfileApi {
 
-    fun update(params: CorporateParams): Later<Corporate>
+    fun update(params: CorporateParams): Later<CorporateDto>
 
-    fun updateLogo(logo: Blob): Later<Corporate>
+    fun updateLogo(logo: Blob): Later<CorporateDto>
 
     fun updateCurrency(currency: Currency): Later<Currency>
 

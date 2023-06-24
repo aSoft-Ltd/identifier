@@ -4,61 +4,76 @@
 package identifier.forms
 
 import cinematic.LazyScene
+import geo.Country
 import hormone.Loader
-import identifier.Corporate
-import identifier.Individual
-import identifier.LegalEntity
+import identifier.CorporatePresenter
+import identifier.IdentifierScopeConfig
+import identifier.IdentifierSettings
+import identifier.IndividualPresenter
+import identifier.LegalEntityDto
+import identifier.LegalEntityPresenter
+import identifier.fields.CorporateFields
+import identifier.fields.IndividualFields
+import identifier.fields.LegalEntityFields
 import identifier.toCorporate
 import identifier.toIndividual
+import identifier.transformers.toPresenter
 import identifier.utils.loadCacheableLegalEntityOrNull
 import identifier.utils.loading
 import kase.Pending
 import kase.Success
 import kase.toLazyState
-import koncurrent.later.finally
-import identifier.IdentifierScopeConfig
-import identifier.fields.CorporateFields
-import identifier.fields.IndividualFields
-import identifier.fields.LegalEntityFields
-import kase.bagOf
 import koncurrent.Later
+import koncurrent.later.finally
 import symphony.FormField
-import symphony.toForm
 import kotlin.js.JsExport
 
 abstract class LegalEntityFormScene(
-    private val config: IdentifierScopeConfig<Loader<LegalEntity>>
-) : LazyScene<FormField<LegalEntityFields<*>>>(Pending) {
+    private val config: IdentifierScopeConfig<Loader<LegalEntityDto>>
+) : LazyScene<FormField<LegalEntityDto, LegalEntityFields<*>>>(Pending) {
 
-    val original = bagOf<LegalEntity>()
+    var original: IdentifierSettings<LegalEntityPresenter?>? = null
 
-    protected fun initializeWith(uid: String?): Later<Any> = config.loadCacheableLegalEntityOrNull(uid) {
-        val loading = loading(uid, "form")
-        ui.value = loading
+    protected fun load(
+        uid: String?,
+        loader: (LegalEntityDto?) -> Later<IdentifierSettings<LegalEntityPresenter?>>
+    ): Later<Any> = config.loadCacheableLegalEntityOrNull(uid) {
+        ui.value = loading(uid, "form")
+    }.andThen {
+        ui.value = loading(uid, "settings")
+        loader(it)
     }.then {
-        original.value = it
-        when (it) {
-            is Corporate -> corporateForm(it)
-            else -> individualForm(it as? Individual)
+        original = it
+        when (val entity = it.data) {
+            is CorporatePresenter -> corporateForm(it.country, entity)
+            else -> individualForm(it.country, entity as? IndividualPresenter)
         }
     }.finally {
-        ui.value = it.toLazyState { onRetry { initializeWith(uid) } }
+        ui.value = it.toLazyState { onRetry { load(uid, loader) } }
     }
 
     fun switchToCorporateForm() {
-        ui.value = Success(corporateForm(original.value?.toCorporate()))
+        val og = original ?: return
+        ui.value = Success(corporateForm(og.country, og.data?.toCorporate()))
     }
 
     fun switchToIndividualForm() {
-        ui.value = Success(individualForm(original.value?.toIndividual()))
+        val og = original ?: return
+        ui.value = Success(individualForm(og.country, og.data?.toIndividual()))
     }
 
     override fun deInitialize() {
-        original.clean()
+        original = null
         super.deInitialize()
     }
 
-    abstract fun individualForm(customer: Individual?): FormField<IndividualFields>
+    abstract fun individualForm(
+        country: Country,
+        customer: IndividualPresenter?
+    ): FormField<LegalEntityDto, IndividualFields>
 
-    abstract fun corporateForm(customer: Corporate?): FormField<CorporateFields>
+    abstract fun corporateForm(
+        country: Country,
+        customer: CorporatePresenter?
+    ): FormField<LegalEntityDto, CorporateFields>
 }

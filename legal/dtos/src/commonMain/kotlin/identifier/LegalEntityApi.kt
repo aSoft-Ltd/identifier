@@ -7,5 +7,5 @@ import hormone.Loader
 import kotlin.js.JsExport
 
 interface LegalEntityApi :
-    Deleter<LegalEntity>,
-    Loader<LegalEntity>
+    Deleter<LegalEntityDto>,
+    Loader<LegalEntityDto>

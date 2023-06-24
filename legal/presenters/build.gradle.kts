@@ -2,9 +2,10 @@ plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
     id("tz.co.asoft.library")
+    signing
 }
 
-description = "An multiplatform library for communication objects identifiers like email & phone"
+description = "A multiplatform library modeling legal entities"
 
 kotlin {
     jvm { library() }
@@ -18,17 +19,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.identifierLegalPresenters)
-                api(projects.hormoneCore)
-                api(projects.cinematicLiveKollections)
-                api(projects.symphonyCollections)
-                api(projects.symphonyInputChoice)
-                api(projects.symphonyInputForm)
-                api(projects.symphonyInputText)
-                api(projects.symphonyInputNumber)
-                api(projects.symphonyInputKrono)
-                api(projects.symphonyInputGeo)
-                api(projects.symphonyInputIdentifier)
+                api(projects.identifierLegalDtos)
             }
         }
 

@@ -3,12 +3,12 @@
 
 package identifier.fields
 
-import identifier.params.IndividualParams as Params
+import geo.Country
 import identifier.DocumentType
-import identifier.Individual
-import identifier.transformers.toParams
+import identifier.Gender
+import identifier.IndividualPresenter
+import identifier.transformers.toOutput
 import neat.required
-import symphony.Fields
 import symphony.Option
 import symphony.date
 import symphony.email
@@ -16,11 +16,14 @@ import symphony.location
 import symphony.name
 import symphony.selectSingle
 import symphony.text
+import symphony.phone
+import symphony.toOption
 import kotlin.js.JsExport
 
 class IndividualFields(
-    override val entity: Individual?
-) : LegalEntityFields<Params>(entity.toParams()) {
+    override val entity: IndividualPresenter?,
+    country: Country
+) : LegalEntityFields<IndividualOutput>(entity.toOutput()) {
     val name = name(name = output::name) { required() }
 
     val title = selectSingle(
@@ -34,38 +37,35 @@ class IndividualFields(
         value = entity?.emails?.firstOrNull()?.value
     )
 
-//    val phone = phone(
-//        name = output::phone,
-//        value = customer?.phones?.firstOrNull()?.value
-//    )
+    val phone = phone(
+        name = output::phone,
+        country = country
+    )
 
     val dob = date(
         name = output::dob,
-        label = "Date of birth",
-        value = entity?.dob
+        label = "Date of birth"
     )
 
-    val location = location(
-        name = output::location,
-        value = entity?.location
-    )
+    val location = location(name = output::location)
 
-//    val address = text(
-//        name = "address",
-//        value = customer?.location?.address
-//    )
+    val address = text(name = output::address)
 
     val idNumber = text(
-        name = output::idDocumentNumber,
-        label = "Id Number",
-        value = entity?.idDocumentNumber
+        name = output::idNumber,
+        label = "Id Number"
+    )
+
+    val gender = selectSingle(
+        name = output::gender,
+        items = Gender.values().toList(),
+        mapper = { it.toOption() }
     )
 
     val idType = selectSingle(
-        name = output::idDocumentType,
+        name = output::idType,
         label = "Id Type",
         items = (DocumentType.values().toSet() - DocumentType.UNKNOWN),
-        value = entity?.idDocumentType,
         mapper = { Option(it.label, it.name) }
     )
 }

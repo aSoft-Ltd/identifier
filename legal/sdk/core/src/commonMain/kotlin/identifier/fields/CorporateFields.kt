@@ -3,24 +3,29 @@
 
 package identifier.fields
 
-import identifier.Corporate
+import geo.Country
+import identifier.CorporatePresenter
+import identifier.CorporateType
 import identifier.Industry
-import identifier.transformers.toParams
+import identifier.transformers.toOutput
 import neat.min
 import neat.required
 import symphony.Option
 import symphony.date
 import symphony.email
+import symphony.integer
 import symphony.location
 import symphony.name
+import symphony.phone
 import symphony.selectSingle
 import symphony.text
+import symphony.toOption
 import kotlin.js.JsExport
-import identifier.params.CorporateParams as Params
 
 class CorporateFields(
-    override val entity: Corporate?
-) : LegalEntityFields<Params>(entity.toParams()) {
+    override val entity: CorporatePresenter?,
+    country: Country
+) : LegalEntityFields<CorporateOutput>(entity.toOutput()) {
 
     val name = name(output::name)
 
@@ -34,12 +39,12 @@ class CorporateFields(
     val businessType = selectSingle(
         name = output::businessType,
         label = "Business Type",
-        items = Corporate.Type.values().toList(),
-        mapper = { Option(it.label, it.name) },
+        items = CorporateType.values().toList(),
+        mapper = { it.toOption() },
     ) { required() }
 
     val headquarters = location(
-        name = output::hqLocation,
+        name = output::headquarters,
         label = "Headquarters",
     )
 
@@ -81,15 +86,16 @@ class CorporateFields(
         label = "Contact Email",
     )
 
-//    val contactPhone = phone(
-//        name = output::contactPhone,
-//        label = "Contact Phone",
-//    )
+    val contactPhone = phone(
+        name = output::contactPhone,
+        label = "Contact Phone",
+        country = country
+    )
 
-//    val numberOfEmployees = integer(
-//        name = "NoE",
-//        label = "Number of Employees"
-//    )
+    val numberOfEmployees = integer(
+        name = output::numberOfEmployees,
+        label = "Number of Employees"
+    )
 
     val contactRole = selectSingle(
         name = output::contactRole,

@@ -9,8 +9,8 @@ import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
 @Serializable
-data class CorporateBranch(
+data class CorporateBranchDto(
     val name: String,
-    val contacts: List<Contact> = iListOf(),
+    val contacts: List<ContactDto> = iListOf(),
     val location: GeoLocation? = null,
 )

@@ -1,10 +1,12 @@
 package identifier.transformers
 
-import identifier.Corporate
+import identifier.CorporateBranchPresenter
+import identifier.CorporateDto
+import identifier.CorporatePresenter
 import identifier.params.CorporateParams
 import identifier.primaryContact
 
-fun Corporate?.toParams() = CorporateParams(
+fun CorporateDto?.toParams() = CorporateParams(
     name = this?.name ?: "",
     contactName = this?.primaryContact?.name,
     contactEmail = this?.primaryContact?.emails?.firstOrNull()?.value,
@@ -18,4 +20,21 @@ fun Corporate?.toParams() = CorporateParams(
     website = this?.website,
     hqLocation = this?.headQuarters?.location,
     businessType = this?.type
+)
+
+fun CorporateDto.toPresenter() = CorporatePresenter(
+    src = this,
+    uid = uid,
+    name = name,
+    image = image,
+    headQuarters = headQuarters.toPresenter(),
+    branches = branches.map { it.toPresenter() },
+    registrationNo = registrationNo,
+    registrationDate = registrationDate,
+    taxPayerIdentificationNo = taxPayerIdentificationNo,
+    vatNo = vatNo,
+    website = website,
+    industry = industry,
+    gid = gid,
+    type = type,
 )

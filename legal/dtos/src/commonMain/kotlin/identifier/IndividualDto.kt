@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
 @Serializable
-data class Individual(
+data class IndividualDto(
     override val uid: String,
     override val name: String,
     override val image: String? = null,
@@ -23,7 +23,7 @@ data class Individual(
     val idDocumentNumber: String? = null,
     val idDocumentType: DocumentType? = null,
     val location: GeoLocation? = null
-) : LegalEntity() {
+) : LegalEntityDto() {
     val emails get() = comms.filterIsInstance<UserEmail>().toIList()
     val phones get() = comms.filterIsInstance<UserPhone>().toIList()
 }

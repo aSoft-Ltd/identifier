@@ -9,7 +9,7 @@ import kollections.toIList
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Contact(
+data class ContactDto(
     val uid: String,
     /**
      * Can be either
