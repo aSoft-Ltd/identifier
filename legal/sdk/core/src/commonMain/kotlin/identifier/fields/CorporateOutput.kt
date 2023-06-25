@@ -21,6 +21,7 @@ class CorporateOutput(
     var contactName: String?,
     var contactEmail: String?,
     var contactPhone: PhoneOutput?,
-    var numberOfEmployees: Int?,
     var contactRole: String?,
+    var contactTitle: String?,
+    var numberOfEmployees: Int?,
 )

@@ -103,4 +103,11 @@ class CorporateFields(
         items = listOf("Manager", "Officer", "Accountant", "Other"),
         mapper = { Option(it) }
     )
+
+    val contactTitle = selectSingle(
+        name = output::contactTitle,
+        label = "Contact Title",
+        items = titles,
+        mapper = { Option(it) }
+    )
 }

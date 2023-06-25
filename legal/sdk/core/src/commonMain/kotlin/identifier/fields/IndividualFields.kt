@@ -28,7 +28,7 @@ class IndividualFields(
 
     val title = selectSingle(
         name = output::title,
-        items = listOf("Mr", "Mrs", "Ms"),
+        items = titles,
         mapper = { Option(it) }
     )
 

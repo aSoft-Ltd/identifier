@@ -24,4 +24,5 @@ fun CorporatePresenter?.toOutput() = CorporateOutput(
     contactPhone = this?.primaryContact?.phones?.firstOrNull()?.toOutput(),
     numberOfEmployees = null,
     contactRole = this?.primaryContact?.role,
+    contactTitle = null
 )
