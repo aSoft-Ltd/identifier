@@ -9,7 +9,7 @@ import krono.LocalDate
 import kotlin.js.JsExport
 
 data class IndividualPresenter(
-    val src: IndividualDto,
+    override val src: IndividualDto,
     override val uid: String,
     override val name: String,
     override val image: String?,

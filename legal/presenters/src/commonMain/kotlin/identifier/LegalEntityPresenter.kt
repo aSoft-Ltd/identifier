@@ -1,4 +1,5 @@
 @file:JsExport
+@file:Suppress("NON_EXPORTABLE_TYPE")
 
 package identifier
 
@@ -6,6 +7,7 @@ import geo.GeoLocation
 import kotlin.js.JsExport
 
 sealed class LegalEntityPresenter {
+    abstract val src: LegalEntityDto
     abstract val uid: String
     abstract val gid: String
     abstract val name: String
