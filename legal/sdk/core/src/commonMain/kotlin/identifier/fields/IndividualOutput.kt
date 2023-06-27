@@ -9,7 +9,7 @@ import symphony.PhoneOutput
 
 class IndividualOutput(
     val src: IndividualPresenter?,
-    var name: String,
+    var name: String?,
     var title: String?,
     var email: String?,
     var phone: PhoneOutput?,

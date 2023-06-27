@@ -4,7 +4,7 @@ import identifier.fields.CorporateOutput
 import identifier.params.CorporateParams
 
 fun CorporateOutput.toParams() = CorporateParams(
-    name = name,
+    name = name ?: throw IllegalArgumentException("Name must not be null"),
     contactName = contactName,
     contactEmail = contactEmail,
     contactPhone = contactPhone?.toString(),

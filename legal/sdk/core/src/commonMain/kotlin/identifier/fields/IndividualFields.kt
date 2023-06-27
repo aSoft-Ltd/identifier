@@ -32,10 +32,7 @@ class IndividualFields(
         mapper = { Option(it) }
     )
 
-    val email = email(
-        name = output::email,
-        value = entity?.emails?.firstOrNull()?.value
-    )
+    val email = email(output::email)
 
     val phone = phone(
         name = output::phone,

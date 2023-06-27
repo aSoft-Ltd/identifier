@@ -23,7 +23,6 @@ kotlin {
                 api(projects.cinematicLiveKollections)
                 api(projects.symphonyCollections)
                 api(projects.symphonyInputChoice)
-                api(projects.symphonyInputForm)
                 api(projects.symphonyInputText)
                 api(projects.symphonyInputNumber)
                 api(projects.symphonyInputKrono)

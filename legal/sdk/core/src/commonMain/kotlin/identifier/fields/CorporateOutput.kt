@@ -9,7 +9,7 @@ import symphony.PhoneOutput
 
 class CorporateOutput(
     val src: CorporatePresenter?,
-    var name: String,
+    var name: String?,
     var industry: Industry?,
     var businessType: CorporateType?,
     var headquarters: GeoLocation?,

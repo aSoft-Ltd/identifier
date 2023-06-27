@@ -4,7 +4,7 @@ import identifier.fields.IndividualOutput
 import identifier.params.IndividualParams
 
 fun IndividualOutput.toParams() = IndividualParams(
-    name = name,
+    name = name ?: throw IllegalArgumentException("Name must not be null"),
     email = email,
     phone = phone?.toString(),
     title = title,
