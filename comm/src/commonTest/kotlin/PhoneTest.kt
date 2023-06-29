@@ -1,5 +1,6 @@
 import identifier.Phone
 import expect.expect
+import kommander.expect
 import kotlin.test.*
 
 class PhoneTest {
@@ -40,7 +41,7 @@ class PhoneTest {
 
     @Test
     fun should_parse_SA_phone_numbers() {
-        expect(Phone("+27728772937")).toBe(Phone("+27728772937"))
+        expect<Phone>(Phone("+27728772937")).toBe(Phone("+27728772937"))
     }
 
     @Test
