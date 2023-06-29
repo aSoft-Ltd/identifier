@@ -17,7 +17,6 @@ import identifier.fields.IndividualFields
 import identifier.fields.LegalEntityFields
 import identifier.toCorporate
 import identifier.toIndividual
-import identifier.transformers.toPresenter
 import identifier.utils.loadCacheableLegalEntityOrNull
 import identifier.utils.loading
 import kase.Pending
@@ -30,7 +29,7 @@ import kotlin.js.JsExport
 
 abstract class LegalEntityFormScene(
     private val config: IdentifierScopeConfig<Loader<LegalEntityDto>>
-) : LazyScene<FormField<LegalEntityDto, LegalEntityFields<*>>>(Pending) {
+) : LazyScene<FormField<LegalEntityPresenter, LegalEntityFields<*>>>(Pending) {
 
     var original: IdentifierSettings<LegalEntityPresenter?>? = null
 
@@ -70,10 +69,10 @@ abstract class LegalEntityFormScene(
     abstract fun individualForm(
         country: Country,
         customer: IndividualPresenter?
-    ): FormField<LegalEntityDto, IndividualFields>
+    ): FormField<LegalEntityPresenter, IndividualFields>
 
     abstract fun corporateForm(
         country: Country,
         customer: CorporatePresenter?
-    ): FormField<LegalEntityDto, CorporateFields>
+    ): FormField<LegalEntityPresenter, CorporateFields>
 }

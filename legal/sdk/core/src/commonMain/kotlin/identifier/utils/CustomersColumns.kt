@@ -1,30 +1,31 @@
 package identifier.utils
 
-import identifier.CorporateDto
-import identifier.LegalEntityDto
+import identifier.CorporatePresenter
 import identifier.IndividualDto
+import identifier.IndividualPresenter
+import identifier.LegalEntityPresenter
 import symphony.columnsOf
 
-fun LegalEntityColumns() = columnsOf<LegalEntityDto> {
+fun columnsOfLegalEntity() = columnsOf<LegalEntityPresenter> {
     selectable()
     column("Id") { it.item.gid }
     column("Name") { it.item.name }
     column("industry") {
         when (val c = it.item) {
-            is CorporateDto -> c.industry
-            is IndividualDto -> "N/A"
+            is CorporatePresenter -> c.industry
+            is IndividualPresenter -> "N/A"
         }
     }
     column("Country") {
         when (val c = it.item) {
-            is CorporateDto -> c.headQuarters.location?.country
-            is IndividualDto -> c.location?.country
+            is CorporatePresenter -> c.headQuarters.location?.country
+            is IndividualPresenter -> c.location?.country
         }
     }
     column("HeadQuarters") {
         when (val c = it.item) {
-            is CorporateDto -> c.headQuarters.location
-            is IndividualDto -> "N/A"
+            is CorporatePresenter -> c.headQuarters.location
+            is IndividualPresenter -> "N/A"
         }
     }
 
@@ -32,26 +33,26 @@ fun LegalEntityColumns() = columnsOf<LegalEntityDto> {
 
     column("Registration No") {
         when (val c = it.item) {
-            is CorporateDto -> c.registrationNo.toString()
-            is IndividualDto -> "N/A"
+            is CorporatePresenter -> c.registrationNo.toString()
+            is IndividualPresenter -> "N/A"
         }
     }
     column("Registration Date") {
         when (val c = it.item) {
-            is CorporateDto -> c.registrationDate.toString()
-            is IndividualDto -> "N/A"
+            is CorporatePresenter -> c.registrationDate.toString()
+            is IndividualPresenter -> "N/A"
         }
     }
     column("TIN") {
         when (val c = it.item) {
-            is CorporateDto -> c.taxPayerIdentificationNo.toString()
-            is IndividualDto -> "N/A"
+            is CorporatePresenter -> c.taxPayerIdentificationNo.toString()
+            is IndividualPresenter -> "N/A"
         }
     }
     column("Website") {
         when (val c = it.item) {
-            is CorporateDto -> c.website.toString()
-            is IndividualDto -> "N/A"
+            is CorporatePresenter -> c.website.toString()
+            is IndividualPresenter -> "N/A"
         }
     }
 }
