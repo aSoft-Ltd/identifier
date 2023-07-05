@@ -3,7 +3,7 @@ package identifier
 import koncurrent.Later
 import kotlin.js.JsName
 
-interface IdentifierApi {
+interface IdentifierApiProvider {
 
     @JsName("settingsWithData")
     fun <R> settings(data: R): Later<IdentifierSettings<R>>
