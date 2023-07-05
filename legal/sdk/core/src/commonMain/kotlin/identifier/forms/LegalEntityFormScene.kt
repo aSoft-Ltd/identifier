@@ -7,7 +7,7 @@ import cinematic.LazyScene
 import geo.Country
 import hormone.Loader
 import identifier.CorporatePresenter
-import identifier.IdentifierScopeConfig
+import identifier.IdentifierScenesConfig
 import identifier.IdentifierSettings
 import identifier.IndividualPresenter
 import identifier.LegalEntityDto
@@ -28,8 +28,10 @@ import symphony.FormField
 import kotlin.js.JsExport
 
 abstract class LegalEntityFormScene(
-    private val config: IdentifierScopeConfig<Loader<LegalEntityDto>>
+    private val config: IdentifierScenesConfig<Loader<LegalEntityDto>>
 ) : LazyScene<FormField<LegalEntityPresenter, LegalEntityFields<*>>>(Pending) {
+
+    abstract val api: Loader<LegalEntityDto>
 
     var original: IdentifierSettings<LegalEntityPresenter?>? = null
 
