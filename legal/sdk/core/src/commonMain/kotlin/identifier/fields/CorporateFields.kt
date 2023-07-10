@@ -8,7 +8,7 @@ import identifier.CorporatePresenter
 import identifier.CorporateType
 import identifier.Industry
 import identifier.transformers.toOutput
-import neat.min
+import neat.collections.min
 import neat.required
 import symphony.Option
 import symphony.date
