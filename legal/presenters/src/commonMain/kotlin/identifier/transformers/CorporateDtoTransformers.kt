@@ -1,6 +1,5 @@
 package identifier.transformers
 
-import identifier.CorporateBranchPresenter
 import identifier.CorporateDto
 import identifier.CorporatePresenter
 import identifier.params.CorporateParams
