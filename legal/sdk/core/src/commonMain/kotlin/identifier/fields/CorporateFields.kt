@@ -13,6 +13,7 @@ import neat.required
 import symphony.Option
 import symphony.date
 import symphony.email
+import symphony.filter
 import symphony.integer
 import symphony.location
 import symphony.name
@@ -33,14 +34,16 @@ class CorporateFields(
         name = output::industry,
         label = "Industry",
         items = Industry.values().toList(),
-        mapper = { Option(it.label, it.name) },
+        mapper = { it.toOption(it.label) },
+        filter = { it, key -> it.filter(it.label, key) }
     )
 
     val businessType = selectSingle(
         name = output::businessType,
         label = "Business Type",
         items = CorporateType.values().toList(),
-        mapper = { it.toOption() },
+        mapper = { it.toOption(label = it.label) },
+        filter = { it, key -> it.filter(it.label, key) }
     ) { required() }
 
     val headquarters = location(
