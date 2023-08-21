@@ -1,9 +1,13 @@
+@file:JsExport
+@file:Suppress("NON_EXPORTABLE_TYPE")
+
 package identifier
 
 import epsilon.Blob
 import identifier.params.IndividualProfileParams
 import identifier.params.PasswordParams
 import koncurrent.Later
+import kotlin.js.JsExport
 
 interface PersonalProfileApi {
 
