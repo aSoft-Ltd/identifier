@@ -14,7 +14,7 @@ fun IndividualPresenter?.toOutput() = IndividualOutput(
     dob = this?.dob,
     gender = this?.gender,
     location = this?.location,
-    address = this?.location?.address,
+    address = this?.address,
     idType = this?.idDocumentType,
     idNumber = this?.idDocumentNumber,
 )

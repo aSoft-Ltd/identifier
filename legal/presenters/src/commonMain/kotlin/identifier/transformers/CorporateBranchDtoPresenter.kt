@@ -10,6 +10,7 @@ fun CorporateBranchDto.toPresenter() = CorporateBranchPresenter(
     name = name,
     contacts = contacts.map { it.toPresenter() },
     location = location,
+    address = address
 )
 
 fun ContactDto.toPresenter() = ContactPresenter(

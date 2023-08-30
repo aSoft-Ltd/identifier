@@ -13,6 +13,7 @@ class CorporateOutput(
     var industry: Industry?,
     var businessType: CorporateType?,
     var headquarters: GeoLocation?,
+    var address: String?,
     var registrationNo: String?,
     var registrationDate: LocalDate?,
     var tin: String?,

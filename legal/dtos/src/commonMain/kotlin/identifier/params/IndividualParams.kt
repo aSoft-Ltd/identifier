@@ -20,5 +20,6 @@ data class IndividualParams(
     val gender: Gender? = null,
     val idDocumentNumber: String? = null,
     val idDocumentType: DocumentType? = null,
-    val location: GeoLocation? = null
+    val location: GeoLocation? = null,
+    val address: String? = null
 )

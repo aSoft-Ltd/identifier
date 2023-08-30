@@ -18,6 +18,7 @@ fun CorporateOutput.toParams() = catching {
         vat = vat,
         website = website,
         hqLocation = headquarters,
+        address = address,
         businessType = businessType,
     )
 }

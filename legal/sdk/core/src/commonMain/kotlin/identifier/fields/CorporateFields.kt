@@ -51,6 +51,11 @@ class CorporateFields(
         label = "Headquarters",
     )
 
+    val address = text(
+        name = output::address,
+        label = "Address"
+    )
+
     val registrationNo = text(
         name = output::registrationNo,
         label = "Registration No"

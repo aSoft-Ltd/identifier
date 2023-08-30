@@ -11,4 +11,5 @@ data class CorporateBranchPresenter(
     val name: String,
     val contacts: List<ContactPresenter>,
     val location: GeoLocation?,
+    val address: String?,
 )

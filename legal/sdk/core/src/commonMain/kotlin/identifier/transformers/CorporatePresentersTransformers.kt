@@ -14,6 +14,7 @@ fun CorporatePresenter?.toOutput() = CorporateOutput(
     industry = this?.industry,
     businessType = this?.type,
     headquarters = this?.headQuarters?.location,
+    address = this?.headQuarters?.address,
     registrationNo = this?.registrationNo,
     registrationDate = this?.registrationDate,
     tin = this?.taxPayerIdentificationNo,

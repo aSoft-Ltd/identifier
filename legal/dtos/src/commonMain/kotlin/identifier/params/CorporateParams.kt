@@ -24,5 +24,6 @@ data class CorporateParams(
     val vat: String? = null,
     val website: String? = null,
     val hqLocation: GeoLocation? = null,
+    val address: String? = null,
     val businessType: CorporateType? = null
 )

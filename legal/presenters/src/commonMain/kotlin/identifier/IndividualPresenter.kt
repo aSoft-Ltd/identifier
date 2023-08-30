@@ -20,7 +20,8 @@ data class IndividualPresenter(
     override val gid: String,
     val idDocumentNumber: String?,
     val idDocumentType: DocumentType?,
-    val location: GeoLocation?
+    val location: GeoLocation?,
+    val address: String?
 ) : LegalEntityPresenter() {
     val emails get() = comms.filterIsInstance<UserEmail>().toIList()
     val phones get() = comms.filterIsInstance<UserPhone>().toIList()

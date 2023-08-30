@@ -13,4 +13,5 @@ data class CorporateBranchDto(
     val name: String,
     val contacts: List<ContactDto> = iListOf(),
     val location: GeoLocation? = null,
+    val address: String? = null,
 )

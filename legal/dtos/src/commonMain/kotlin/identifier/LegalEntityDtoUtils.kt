@@ -25,7 +25,8 @@ private inline fun IndividualDto.toCorporate() = CorporateDto(
                 role = "Owner"
             )
         ),
-        location = location
+        location = location,
+        address = address
     )
 )
 
