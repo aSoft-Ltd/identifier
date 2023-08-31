@@ -30,6 +30,6 @@ kotlin {
 }
 
 aSoftOSSLibrary(
-    version = asoft.versions.root.get(),
+    version = libs.versions.asoft.get(),
     description = "A generator for different identifiers"
 )
