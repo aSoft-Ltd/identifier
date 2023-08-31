@@ -21,9 +21,9 @@ kotlin {
             dependencies {
                 api(projects.identifierComm)
                 api(projects.hormoneCore)
-                api(projects.kronoApi)
+                api(libs.krono.api)
                 api(libs.geo.core)
-                api(projects.epsilonCore)
+                api(libs.epsilon.core)
             }
         }
 
