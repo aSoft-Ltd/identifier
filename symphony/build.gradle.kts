@@ -14,7 +14,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.presentersInputsCore)
-                api(projects.identifierComm)
+                api(libs.identifier.comm)
             }
         }
 
