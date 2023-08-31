@@ -19,7 +19,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.identifierLegalPresenters)
-                api(projects.hormoneCore)
+                api(libs.hormone.core)
                 api(libs.cinematic.live.kollections)
                 api(projects.symphonyCollections)
                 api(projects.symphonyInputChoice)

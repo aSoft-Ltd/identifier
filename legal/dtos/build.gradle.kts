@@ -20,7 +20,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.identifierComm)
-                api(projects.hormoneCore)
+                api(libs.hormone.core)
                 api(libs.krono.api)
                 api(libs.geo.core)
                 api(libs.epsilon.core)
