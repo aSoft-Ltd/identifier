@@ -20,7 +20,7 @@ kotlin {
             dependencies {
                 api(projects.identifierLegalPresenters)
                 api(projects.hormoneCore)
-                api(projects.cinematicLiveKollections)
+                api(libs.cinematic.live.kollections)
                 api(projects.symphonyCollections)
                 api(projects.symphonyInputChoice)
                 api(projects.symphonyInputText)
