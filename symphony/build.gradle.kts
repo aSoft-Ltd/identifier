@@ -21,7 +21,7 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(projects.expectCoroutines)
-                implementation(projects.koncurrentLaterCoroutines)
+                implementation(libs.koncurrent.later.coroutines)
                 implementation(projects.liveTest)
                 implementation(projects.koncurrentPrimitivesMock)
             }
