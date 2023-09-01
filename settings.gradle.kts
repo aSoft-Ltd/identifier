@@ -13,7 +13,10 @@ fun includeSubs(base: String, path: String = base, vararg subs: String) {
     }
 }
 
-listOf("geo","kash","krono","neat","cinematic","koncurrent").forEach {
+listOf(
+	"geo","kash","krono","neat","cinematic","koncurrent","kollections",
+	"kommander","epsilon","hormone","symphony"
+).forEach {
 	includeBuild("../$it")
 }
 
