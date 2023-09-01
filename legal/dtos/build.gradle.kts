@@ -19,17 +19,17 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.identifierComm)
-                api(projects.hormoneCore)
-                api(projects.kronoApi)
-                api(projects.geoCore)
-                api(projects.epsilonCore)
+                api(libs.identifier.comm)
+                api(libs.hormone.core)
+                api(libs.krono.api)
+                api(libs.geo.core)
+                api(libs.epsilon.core)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.kommanderCore)
+                implementation(libs.kommander.core)
                 implementation(kotlinx.serialization.json)
             }
         }

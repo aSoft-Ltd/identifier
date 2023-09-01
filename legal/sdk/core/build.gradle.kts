@@ -18,22 +18,22 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.identifierLegalPresenters)
-                api(projects.hormoneCore)
-                api(projects.cinematicLiveKollections)
-                api(projects.symphonyCollections)
-                api(projects.symphonyInputChoice)
-                api(projects.symphonyInputText)
-                api(projects.symphonyInputNumber)
-                api(projects.symphonyInputKrono)
-                api(projects.symphonyInputGeo)
-                api(projects.symphonyInputIdentifier)
+                api(libs.identifier.legal.presenters)
+                api(libs.hormone.core)
+                api(libs.cinematic.live.kollections)
+                api(libs.symphony.collections)
+                api(libs.symphony.input.choice)
+                api(libs.symphony.input.text)
+                api(libs.symphony.input.number)
+//                api(projects.symphonyInputKrono)
+//                api(projects.symphonyInputGeo)
+//                api(projects.symphonyInputIdentifier)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.kommanderCore)
+                implementation(libs.kommander.core)
                 implementation(kotlinx.serialization.json)
             }
         }

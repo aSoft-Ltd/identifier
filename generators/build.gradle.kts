@@ -22,7 +22,7 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.kommanderCore)
+                implementation(libs.kommander.core)
                 implementation(kotlinx.serialization.json)
             }
         }
@@ -30,6 +30,6 @@ kotlin {
 }
 
 aSoftOSSLibrary(
-    version = asoft.versions.root.get(),
+    version = libs.versions.asoft.get(),
     description = "A generator for different identifiers"
 )

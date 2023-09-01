@@ -14,14 +14,14 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.presentersInputsCore)
-                api(projects.identifierComm)
+                api(libs.identifier.comm)
             }
         }
 
         val commonTest by getting {
             dependencies {
                 implementation(projects.expectCoroutines)
-                implementation(projects.koncurrentLaterCoroutines)
+                implementation(libs.koncurrent.later.coroutines)
                 implementation(projects.liveTest)
                 implementation(projects.koncurrentPrimitivesMock)
             }
@@ -30,6 +30,6 @@ kotlin {
 }
 
 aSoftOSSLibrary(
-    version = asoft.versions.root.get(),
+    version = libs.versions.asoft.get(),
     description = "A kotlin multiplatform library"
 )
