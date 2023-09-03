@@ -13,7 +13,7 @@ import kotlin.jvm.JvmStatic
  *  currently supports email addresses and phone numbers
  */
 @Serializable
-sealed interface Comm : Savable {
+sealed interface Comm {
     val verified: Boolean
     val userId: String
     val value: String
@@ -24,16 +24,14 @@ sealed interface Comm : Savable {
         fun of(
             value: String,
             userId: String,
-            verified: Boolean = false,
-            uid: String = UNSET,
-            deleted: Boolean = false,
+            verified: Boolean = false
         ): Comm = when (val id = Identifier.from(value)) {
             is Identifier.Phone -> UserPhone(
-                value = id.value, userId, verified, whatsapp = false, uid, deleted
+                value = id.value, userId, verified, whatsapp = false
             )
 
             is Identifier.Email -> UserEmail(
-                value = id.value, userId, verified, uid, deleted
+                value = id.value, userId, verified
             )
         }
     }

@@ -14,14 +14,14 @@ fun includeSubs(base: String, path: String = base, vararg subs: String) {
 }
 
 listOf(
-	"geo","kash","krono","neat","cinematic","koncurrent","kollections",
-	"kommander","epsilon","hormone","symphony"
+    "geo", "kash", "krono", "neat", "cinematic", "koncurrent", "kollections",
+    "kommander", "epsilon", "hormone", "symphony"
 ).forEach {
-	includeBuild("../$it")
+    includeBuild("../$it")
 }
 
 rootProject.name = "identifier"
 
-includeSubs("identifier", ".", "core", "comm")
-includeSubs("identifier-legal", "legal", "dtos","presenters")
+includeSubs("identifier", ".", "core", "comm", "fields")
+includeSubs("identifier-legal", "legal", "dtos", "presenters")
 includeSubs("identifier-legal-sdk-client", "legal/sdk", "core")

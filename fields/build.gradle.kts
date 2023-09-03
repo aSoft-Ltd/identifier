@@ -4,7 +4,7 @@ plugins {
     id("tz.co.asoft.library")
 }
 
-description = "An multiplatform library for communication objects identifiers like email & phone"
+description = "A kotlin multiplatform library for headless input phone & email fields"
 
 kotlin {
     jvm { library() }
@@ -18,23 +18,22 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(libs.identifier.legal.presenters)
-                api(libs.hormone.core)
-                api(libs.cinematic.live.kollections)
-                api(libs.symphony.collections)
-                api(libs.symphony.input.choice)
+                api(projects.identifierComm)
                 api(libs.symphony.input.text)
                 api(libs.symphony.input.number)
-                api(libs.identifier.fields)
-//                api(projects.symphonyInputKrono)
-//                api(projects.symphonyInputGeo)
+                api(libs.symphony.input.choice)
+                api(libs.geo.countries)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(libs.kommander.core)
-                implementation(kotlinx.serialization.json)
+                implementation(libs.symphony.input.text)
+                implementation(libs.symphony.input.choice)
+                implementation(libs.kommander.coroutines)
+                implementation(libs.koncurrent.later.coroutines)
+                implementation(libs.cinematic.live.test)
+                implementation(libs.koncurrent.executors.mock)
             }
         }
     }

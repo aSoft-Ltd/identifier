@@ -11,11 +11,7 @@ internal data class PhoneImpl private constructor(
     override val value: String,
     override val verified: Boolean = false,
     override val userId: String = UNSET,
-    override val deleted: Boolean = false,
-    override val uid: String = UNSET,
 ) : Phone {
-
-    override fun copy(uid: String, deleted: Boolean) = copy(uid = uid, deleted = deleted, value = value)
 
     companion object {
         operator fun invoke(value: String): PhoneImpl {
