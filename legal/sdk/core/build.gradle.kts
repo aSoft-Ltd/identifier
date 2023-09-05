@@ -26,8 +26,8 @@ kotlin {
                 api(libs.symphony.input.text)
                 api(libs.symphony.input.number)
                 api(libs.identifier.fields)
-//                api(projects.symphonyInputKrono)
-//                api(projects.symphonyInputGeo)
+                api(libs.geo.fields)
+                api(libs.krono.fields)
             }
         }
 
