@@ -6,4 +6,5 @@ import geo.Country
 
 inline fun Country.matches(key: String): Boolean = label.startsWith(key, ignoreCase = true)
         || code.startsWith(key, ignoreCase = true)
-        || dialingCode.replace("+","").startsWith(key.replace("+", ""))
+        || currency.name.startsWith(key, ignoreCase = true)
+        || dialingCode.replace("+", "").startsWith(key.replace("+", ""))
