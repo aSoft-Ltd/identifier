@@ -10,7 +10,7 @@ import identifier.IndividualPresenter
 import identifier.transformers.toOutput
 import neat.required
 import symphony.Option
-import symphony.date
+import krono.date
 import symphony.email
 import symphony.location
 import symphony.name
