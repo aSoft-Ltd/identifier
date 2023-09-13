@@ -18,7 +18,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(libs.identifier.core)
+                api(projects.identifierCore)
                 api(libs.kollections.interoperable)
             }
         }

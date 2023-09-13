@@ -19,11 +19,11 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(libs.identifier.comm)
+                api(projects.identifierComm)
                 api(libs.hormone.core)
                 api(libs.krono.api)
                 api(libs.geo.core)
-                api(libs.epsilon.core)
+                api(libs.epsilon.api.core)
             }
         }
 

@@ -19,7 +19,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(libs.identifier.legal.dtos)
+                api(projects.identifierLegalDtos)
             }
         }
 

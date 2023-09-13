@@ -18,14 +18,14 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(libs.identifier.legal.presenters)
+                api(projects.identifierLegalPresenters)
+                api(projects.identifierFields)
                 api(libs.hormone.core)
                 api(libs.cinematic.live.kollections)
                 api(libs.symphony.collections)
                 api(libs.symphony.input.choice)
                 api(libs.symphony.input.text)
                 api(libs.symphony.input.number)
-                api(libs.identifier.fields)
                 api(libs.geo.fields)
                 api(libs.krono.fields)
             }
