@@ -12,7 +12,7 @@ import neat.required
 import symphony.Option
 import krono.date
 import symphony.email
-import symphony.location
+import geo.location
 import symphony.name
 import symphony.selectSingle
 import symphony.text

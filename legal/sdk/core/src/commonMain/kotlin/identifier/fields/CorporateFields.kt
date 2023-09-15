@@ -15,7 +15,7 @@ import krono.date
 import symphony.email
 import symphony.filter
 import symphony.integer
-import symphony.location
+import geo.location
 import symphony.name
 import symphony.phone
 import symphony.selectSingle
