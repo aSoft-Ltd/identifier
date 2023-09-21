@@ -1,6 +1,7 @@
 package symphony
 
 import geo.Country
+import geo.matches
 import neat.ValidationFactory
 import symphony.internal.PhoneFieldImpl
 import symphony.validators.email

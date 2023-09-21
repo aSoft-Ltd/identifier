@@ -3,6 +3,7 @@
 
 package identifier.params
 
+import geo.AddressDto
 import geo.GeoLocation
 import identifier.CorporateType
 import identifier.Industry
@@ -24,6 +25,6 @@ data class CorporateParams(
     val vat: String? = null,
     val website: String? = null,
     val hqLocation: GeoLocation? = null,
-    val address: String? = null,
+    val address: AddressDto? = null,
     val businessType: CorporateType? = null
 )
