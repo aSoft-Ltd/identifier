@@ -22,7 +22,8 @@ kotlin {
                 api(projects.identifierComm)
                 api(libs.hormone.core)
                 api(libs.krono.api)
-                api(libs.geo.core)
+                api(libs.geo.coordinates)
+                api(libs.geo.addresses)
                 api(libs.epsilon.api.core)
             }
         }
