@@ -1,6 +1,6 @@
-import expect.expect
+import kommander.expect
 import identifier.Email
-import expect.expectFunction
+import kommander.expectFunction
 import kommander.expect
 import kotlin.test.*
 

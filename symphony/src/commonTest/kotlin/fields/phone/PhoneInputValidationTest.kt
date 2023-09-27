@@ -1,7 +1,7 @@
 package fields.phone
 
-import expect.expect
-import expect.toBe
+import kommander.expect
+import kommander.toBe
 import kotlinx.coroutines.test.runTest
 import presenters.validation.Invalid
 import presenters.PhoneInputField

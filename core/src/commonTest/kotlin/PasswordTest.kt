@@ -1,4 +1,4 @@
-import expect.expect
+import kommander.expect
 import identifier.Password
 import kommander.expect
 import kotlin.test.Test

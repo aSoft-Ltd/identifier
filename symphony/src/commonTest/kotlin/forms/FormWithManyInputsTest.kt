@@ -1,6 +1,6 @@
 package forms
 
-import expect.expect
+import kommander.expect
 import kase.Submitting
 import kase.Success
 import kase.Validating

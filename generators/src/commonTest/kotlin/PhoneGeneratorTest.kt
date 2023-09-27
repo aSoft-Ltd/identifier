@@ -1,4 +1,4 @@
-import expect.expect
+import kommander.expect
 import identifier.PhoneGenerator
 import kotlin.test.Test
 

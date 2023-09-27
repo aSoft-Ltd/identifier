@@ -1,5 +1,5 @@
 import identifier.Phone
-import expect.expect
+import kommander.expect
 import kommander.expect
 import kotlin.test.*
 

@@ -1,7 +1,7 @@
 import identifier.EmailGenerator
-import expect.expect
-import expect.expectArray
-import expect.expectCollection
+import kommander.expect
+import kommander.expectArray
+import kommander.expectCollection
 import kotlin.test.Test
 
 class EmailGeneratorTest {
