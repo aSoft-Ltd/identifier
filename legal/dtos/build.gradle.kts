@@ -24,7 +24,7 @@ kotlin {
                 api(libs.krono.api)
                 api(libs.geo.coordinates)
                 api(libs.geo.addresses)
-                api(libs.epsilon.api.core)
+//                api(libs.epsilon.api.core)
             }
         }
 
